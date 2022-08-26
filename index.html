@@ -1,0 +1,50 @@
+<html>
+
+  <head>
+    <title>EYES</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      const getCenter = (positions) => {
+        const { left, right, bottom, top } = positions;
+        const x = left + ((right - left) / 2);
+        const y = top + ((bottom - top) / 2);
+        return { x, y };
+      };
+
+      const getEyePos = (trackOrigin, pointerPos) => {
+        const heightDiff = pointerPos.y - trackOrigin.y;
+        const widthDiff = pointerPos.x - trackOrigin.x;
+        return { left: widthDiff / 13, top: heightDiff / 5 };
+      };
+
+      const element_id = id => document.getElementById(id);
+      const elements_class =
+        className => document.getElementsByClassName(className);
+
+      const track = function () {
+        const { clientX, clientY } = event;
+        const trackerPos = element_id('eyes').getBoundingClientRect();
+        const origin = getCenter(trackerPos);
+        const eyePos = getEyePos(origin, { x: clientX, y: clientY });
+        const eyes = [...elements_class('eyeball')];
+
+        eyes.forEach(eye => eye.setAttribute(
+          'style', `left: ${eyePos.left}px; top: ${eyePos.top}px;`))
+      };
+    </script>
+  </head>
+
+  <body onmousemove="track()">
+    <div class="page-wrapper">
+      <div id="eyes">
+        <div class="eye">
+          <div class="eyeball"></div>
+        </div>
+        <div class="eye">
+          <div class="eyeball"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page-wrapper {
+  background-color:darkgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#eyes {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.eye {
+  height: 300px;
+  aspect-ratio: 5/8;
+  border-radius: 50%;
+  background-color: white;
+  border: 10px solid black;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eyeball {
+  background-color: black;
+  height: 40%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 5px solid grey;
+  position: relative;
+}
+
